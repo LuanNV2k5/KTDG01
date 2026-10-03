@@ -1,0 +1,304 @@
+<!doctype html>
+<html lang="vi">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#2854D9">
+  <meta name="description" content="WebQuest Kết nối câu lạc bộ: nhiệm vụ, tiến trình 4 tiết, học liệu và tiêu chí đánh giá cho dự án Tin học 12.">
+  <title>Kết nối câu lạc bộ · WebQuest Nhóm 4</title>
+  <!-- Google Fonts; system fonts remain available when offline. -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@500;600;700;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <style>/* =============================================================
+   KẾT NỐI CÂU LẠC BỘ · DESIGN TOKENS
+   8px spacing grid; relative typography; accessible text pairs.
+   ============================================================= */
+:root {
+  --primary:#2854D9; --primary-hover:#2044B5; --accent:#067368;
+  --ink:#162746; --body:#465674; --muted:#586783;
+  --bg:#F7F9FE; --surface:#FFFFFF; --border:#DEE5F2;
+  --blue-soft:#EAF0FF; --teal-soft:#E5F6F1; --yellow-soft:#FFF4D5;
+  --s1:.5rem; --s2:1rem; --s3:1.5rem; --s4:2rem; --s5:2.5rem; --s6:3rem; --s8:4rem;
+  --radius:1.25rem; --shadow:0 8px 28px rgba(22,39,70,.055);
+  --heading:'Be Vietnam Pro',Arial,sans-serif; --font:'Inter',Arial,sans-serif;
+}
+* { box-sizing:border-box; }
+html { scroll-behavior:smooth; scroll-padding-top:7rem; }
+body { margin:0; color:var(--body); background:var(--bg); font-family:var(--font); font-size:1rem; line-height:1.7; -webkit-font-smoothing:antialiased; }
+a { color:var(--primary); text-underline-offset:.2em; }
+a:hover { text-decoration-thickness:2px; }
+button,input,select { font:inherit; }
+button,a { -webkit-tap-highlight-color:transparent; }
+img { display:block; max-width:100%; height:auto; }
+h1,h2,h3,h4 { font-family:var(--heading); color:var(--ink); overflow-wrap:break-word; }
+h1 { font-size:clamp(2.25rem,4.8vw,3.75rem); line-height:1.22; font-weight:800; letter-spacing:-.035em; margin:var(--s3) 0; max-width:19ch; }
+h2 { font-size:clamp(1.5rem,2.5vw,2rem); line-height:1.35; font-weight:700; letter-spacing:-.025em; margin:var(--s6) 0 var(--s3); }
+h3 { font-size:1.25rem; line-height:1.45; font-weight:700; letter-spacing:-.015em; margin:0 0 var(--s2); }
+p { margin:0 0 var(--s2); } li { margin-bottom:.5rem; } ul,ol { padding-left:1.3rem; }
+strong,b { font-weight:700; color:var(--ink); }
+.course-bar { min-height:2.5rem; padding:.5rem max(1.5rem,calc((100vw - 1200px)/2)); display:flex; justify-content:space-between; gap:var(--s2); background:var(--ink); color:#fff; font-size:.75rem; font-weight:600; letter-spacing:.04em; }
+.site-header { position:sticky; top:0; z-index:20; background:rgba(255,255,255,.97); border-bottom:1px solid var(--border); }
+.header-inner { max-width:1280px; margin:auto; padding:var(--s2) var(--s3); display:flex; align-items:center; gap:var(--s3); }
+.brand { display:flex; align-items:center; gap:.75rem; color:var(--ink); font:700 1rem/1.35 var(--heading); text-decoration:none; flex-shrink:0; }
+.brand small { display:block; font:500 .875rem/1.4 var(--heading); }
+.logo { width:2.75rem; height:2.75rem; display:flex; align-items:center; justify-content:center; background:var(--primary); color:#fff; border-radius:.875rem; font:800 1.5rem var(--heading); }
+.logo span { color:#FFD56A; }
+#nav { display:flex; align-items:center; gap:.25rem; justify-content:center; flex:1; }
+#nav a { color:var(--body); padding:.75rem .625rem; text-decoration:none; font-size:.875rem; font-weight:500; border-radius:.625rem; transition:background .18s,color .18s; white-space:nowrap; }
+#nav a:hover { background:var(--bg); color:var(--primary); }
+#nav a.active { background:var(--blue-soft); color:var(--primary); font-weight:700; }
+#toggle { display:none; }
+.button { display:inline-flex; align-items:center; justify-content:center; min-height:3rem; padding:.75rem 1.5rem; border-radius:.75rem; border:1px solid transparent; background:var(--primary); color:#fff; text-decoration:none; font-weight:600; font-size:1rem; line-height:1.5; cursor:pointer; transition:background .2s,box-shadow .2s,transform .2s; }
+.button:hover { color:#fff; background:var(--primary-hover); box-shadow:0 5px 16px rgba(40,84,217,.17); transform:translateY(-2px); }
+.button.alt { color:var(--primary); background:var(--surface); border-color:#B8C8F0; }
+.button.alt:hover { background:var(--blue-soft); }
+.button.small { font-size:.875rem; padding:.625rem 1rem; min-height:2.75rem; }
+.page-meta { max-width:1200px; margin:auto; display:flex; justify-content:space-between; flex-wrap:wrap; gap:.5rem; padding:var(--s3) var(--s3) 0; color:var(--muted); font-size:.875rem; }
+#main { max-width:1200px; margin:auto; padding:var(--s4) var(--s3) var(--s8); outline:0; }
+#main > .eyebrow { margin-top:var(--s2); }
+#main > .lead { margin-bottom:var(--s5); }
+.eyebrow { display:inline-flex; align-items:center; font-size:.875rem; line-height:1.5; font-weight:700; color:var(--accent); letter-spacing:.065em; text-transform:uppercase; }
+.lead { font-size:1.25rem; line-height:1.6; max-width:52rem; color:var(--body); }
+.hero { display:grid; grid-template-columns:1.05fr 1fr; gap:var(--s6); align-items:center; padding:var(--s2) 0 var(--s5); }
+.hero h1 { margin-top:var(--s2); }
+.hero .lead { font-size:1.125rem; line-height:1.65; }
+.hero .intro { max-width:38rem; }
+.hero-panel { padding:var(--s4); background:var(--blue-soft); border-radius:1.75rem; border:1px solid #D1DDFC; }
+.roadmap-label { display:flex; justify-content:space-between; align-items:center; margin-bottom:var(--s3); gap:var(--s2); font-weight:600; font-size:.875rem; color:var(--primary); }
+.roadmap-label .pill { background:#fff; }
+.roadmap-link { display:flex; gap:var(--s2); padding:var(--s2); margin-bottom:.75rem; background:#fff; border:1px solid transparent; border-radius:1rem; text-decoration:none; color:var(--body); align-items:center; transition:transform .2s,border-color .2s; }
+.roadmap-link:hover { transform:translateX(4px); border-color:#A0B5F3; }
+.roadmap-link:last-child { margin-bottom:0; }
+.roadmap-index { width:2.75rem; height:2.75rem; display:grid; place-items:center; flex-shrink:0; color:var(--primary); background:var(--blue-soft); font-family:var(--heading); font-weight:700; border-radius:.875rem; }
+.roadmap-link:nth-child(3) .roadmap-index { color:var(--accent); background:var(--teal-soft); }
+.roadmap-link:nth-child(4) .roadmap-index { color:#75540C; background:var(--yellow-soft); }
+.roadmap-link strong { display:block; font-size:1rem; }
+.roadmap-link small { font-size:.875rem; }
+.hero-image { width:100%; aspect-ratio:4/3; object-fit:cover; border-radius:1.25rem; margin-bottom:var(--s3); }
+.actions { display:flex; flex-wrap:wrap; gap:var(--s2); margin-top:var(--s3); }
+.strip { display:grid; grid-template-columns:repeat(4,1fr); background:#fff; border:1px solid var(--border); border-radius:var(--radius); padding:var(--s3) 0; margin:var(--s2) 0 var(--s5); box-shadow:var(--shadow); }
+.strip > div { padding:0 var(--s3); font-size:.875rem; border-right:1px solid var(--border); }
+.strip > div:last-child { border:0; }
+.strip b { display:block; font:700 1.75rem/1.4 var(--heading); margin-bottom:.25rem; }
+.grid { display:grid; grid-template-columns:repeat(3,minmax(0,1fr)); gap:var(--s3); }
+.two { display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:var(--s3); }
+.card { padding:var(--s4); background:#fff; border:1px solid var(--border); border-radius:var(--radius); box-shadow:var(--shadow); min-width:0; }
+.card p:last-child,.card ul:last-child { margin-bottom:0; }
+.card.tint { background:var(--teal-soft); border-color:#C5E8DE; }
+.card.yellow { background:var(--yellow-soft); border-color:#F3E1AF; }
+.card:has(a):hover { border-color:#B8C8F0; }
+.number { display:inline-block; margin-right:.25rem; font:600 .875rem var(--heading); color:var(--primary); }
+.notice { padding:var(--s3); background:var(--yellow-soft); border:1px solid #F3E1AF; border-left:4px solid #AF7B14; border-radius:1rem; color:var(--ink); margin:var(--s3) 0; }
+.table-wrap { overflow:auto; border:1px solid var(--border); border-radius:1rem; background:white; max-width:100%; scrollbar-color:#A4B5D4 #F0F4FB; }
+table { width:100%; border-collapse:collapse; font-size:.9375rem; }
+th,td { padding:var(--s2) var(--s3); text-align:left; border-bottom:1px solid var(--border); border-right:1px solid var(--border); vertical-align:top; }
+th { color:var(--ink); background:var(--blue-soft); font-weight:700; }
+td { white-space:pre-line; }
+tr:last-child td { border-bottom:0; } tr>*:last-child { border-right:0; }
+.rubric { margin:var(--s4) 0; }
+.rubric table { min-width:1100px; }
+.rubric th:first-child,.rubric td:first-child { position:sticky; left:0; background:#F1F5FF; min-width:160px; box-shadow:1px 0 var(--border); }
+.scroll-hint { font-size:.875rem; color:var(--muted); margin-bottom:.75rem; }
+details { padding:var(--s3); border:1px solid var(--border); border-radius:1rem; background:white; margin:var(--s2) 0; }
+summary { color:var(--ink); font-weight:600; cursor:pointer; padding-right:var(--s2); }
+details[open] summary { margin-bottom:var(--s2); }
+summary::marker { color:var(--primary); }
+.step { padding:var(--s4); margin:var(--s3) 0; border:1px solid var(--border); border-left:4px solid var(--primary); border-radius:var(--radius); background:#fff; box-shadow:var(--shadow); }
+.step h2 { margin:0 0 var(--s3); font-size:1.5rem; }
+iframe { display:block; width:100%; min-height:54rem; border:1px solid var(--border); border-radius:var(--radius); background:#fff; margin-top:var(--s3); }
+.checklist { list-style:none; padding:0; margin:var(--s3) 0; }
+.checklist li { display:flex; gap:.875rem; align-items:flex-start; padding:.75rem 0; border-bottom:1px solid var(--border); }
+.checklist li::before { content:'✓'; color:var(--accent); font-weight:700; background:var(--teal-soft); width:1.75rem; height:1.75rem; flex-shrink:0; display:grid; place-items:center; border-radius:.5rem; }
+.pill { display:inline-block; font-size:.875rem; color:var(--primary); background:var(--blue-soft); padding:.25rem .75rem; border-radius:5rem; font-weight:600; }
+.image-slot { padding:var(--s4); border:1px dashed #9CABC4; background:#fff; border-radius:var(--radius); color:var(--body); }
+.image-slot img { width:100%; aspect-ratio:4/3; object-fit:cover; border-radius:.75rem; margin-bottom:var(--s2); }
+.image-slot strong,.image-slot b { display:block; margin-bottom:.5rem; }
+.lesson-nav { margin-top:var(--s6); padding-top:var(--s3); border-top:1px solid var(--border); display:flex; justify-content:space-between; gap:var(--s2); flex-wrap:wrap; }
+footer { padding:var(--s6) var(--s3) var(--s3); background:var(--ink); color:#DCE5F8; font-size:.875rem; }
+.footer-inner { display:grid; grid-template-columns:1.1fr 1.2fr 1fr; max-width:1152px; margin:auto; gap:var(--s4); }
+footer .brand,footer strong { color:white; } footer p { margin-top:var(--s2); } footer a { color:#DCE5F8; }
+.footer-links { display:flex; flex-direction:column; gap:.75rem; }
+.footer-bottom { max-width:1152px; margin:var(--s4) auto 0; padding-top:var(--s3); border-top:1px solid #40516E; display:flex; justify-content:space-between; gap:var(--s2); flex-wrap:wrap; font-size:.75rem; }
+.skip { position:fixed; left:1rem; top:-6rem; padding:.75rem; background:#fff; border:2px solid var(--primary); z-index:50; }
+.skip:focus { top:1rem; }
+:focus-visible { outline:3px solid var(--primary); outline-offset:4px; }
+footer :focus-visible { outline-color:#FFD56A; }
+/* Tablet: preserve all navigation items without squeezing text. */
+@media (max-width:1100px) {
+ .header-inner { flex-wrap:wrap; gap:var(--s2); } #toggle { display:flex; align-items:center; gap:.5rem; margin-left:auto; background:#fff; color:var(--ink); border:1px solid #9CABC4; border-radius:.625rem; padding:.625rem .75rem; min-height:2.75rem; font-size:.875rem; cursor:pointer; }
+ #nav { display:none; order:3; flex-basis:100%; flex-wrap:wrap; justify-content:flex-start; } #nav.open { display:flex; } #nav a { padding:.75rem 1rem; }
+ .hero { gap:var(--s4); } .hero-panel { padding:var(--s3); }
+}
+@media (max-width:800px) {
+ .hero { grid-template-columns:1fr; gap:var(--s4); } h1 { max-width:25ch; } .grid { grid-template-columns:repeat(2,minmax(0,1fr)); } .two { grid-template-columns:1fr; }
+ .strip { grid-template-columns:repeat(2,1fr); row-gap:var(--s3); } .strip>div:nth-child(2) { border-right:0; } .footer-inner { grid-template-columns:1fr 1fr; } .footer-links { grid-column:1/-1; }
+}
+/* Mobile and enlarged-text layouts. */
+@media (max-width:540px) {
+ .course-bar { padding:.5rem 1rem; font-size:.75rem; } .course-bar span:last-child { display:none; }
+ .header-inner { padding:.75rem 1rem; gap:.5rem; } .brand { font-size:.875rem; gap:.5rem; } .brand small { font-size:.875rem; } .logo { width:2.5rem; height:2.5rem; }
+ .header-cta { padding:.625rem .75rem!important; } #toggle { padding:.625rem; }
+ .page-meta { padding:var(--s2) var(--s2) 0; } #main { padding:var(--s3) var(--s2) var(--s6); } h1 { font-size:2.25rem; line-height:1.25; letter-spacing:-.025em; } .lead { font-size:1.125rem; }
+ .grid { grid-template-columns:1fr; } .card,.step { padding:var(--s3); } .hero-panel { padding:var(--s2); } .hero { padding-top:0; }
+ .strip>div { padding:0 var(--s2); } .strip b { font-size:1.5rem; } .actions .button { flex:1; white-space:nowrap; }
+ .footer-inner { grid-template-columns:1fr; } .footer-links { grid-column:auto; } th,td { padding:var(--s2); }
+}
+@media (prefers-reduced-motion:reduce) { html { scroll-behavior:auto; } *,*::before,*::after { transition:none!important; animation:none!important; } }
+@media print { .site-header,.course-bar,.page-meta,footer,.lesson-nav,iframe { display:none; } #main { padding:0; } .card,.step { break-inside:avoid; box-shadow:none; } body { background:#fff; } }
+/* Embedded video uses a 16:9 frame; Forms retain their taller layout. */
+iframe.video-frame { min-height:0; height:auto; aspect-ratio:16/9; margin:var(--s2) 0; }
+.sample-header { position:sticky; top:0; z-index:20; display:flex; gap:1.5rem; align-items:center; justify-content:space-between; padding:1rem 3%; background:#fff; border-bottom:1px solid var(--border); flex-wrap:wrap; }
+.sample-header nav { display:flex; flex-wrap:wrap; gap:1rem; }
+.sample-header nav a { color:var(--primary); }
+#sample { max-width:1200px; margin:auto; padding:2.5rem 1.5rem 4rem; }
+#sample input,#sample select { border:1px solid #9CABC4; border-radius:.75rem; background:white; color:var(--ink); }
+#sample label { font-weight:500; }
+.sample-site footer { display:block; }
+.rubric th[scope="row"] { font-weight:600; font-size:.9375rem; }
+@media(max-width:540px) { #sample { padding:1.5rem 1rem 3rem; } .sample-header { gap:1rem; } }
+/* Playful school-club edition: warm accents, rounded panels, real illustration. */
+:root { --primary:#5148D9; --primary-hover:#4038B7; --bg:#F6F8FF; --blue-soft:#EEEDFF; --border:#E1E4F4; --radius:1.5rem; --shadow:0 8px 28px rgba(62,54,134,.065); }
+body { background:linear-gradient(135deg,#F2F7FF 0%,#FBF9FF 55%,#FFF9F0 100%); }
+.course-bar { background:#34316C; }
+.logo { background:#5148D9; box-shadow:0 4px 0 #DFDCFF; border-radius:1rem; }
+.site-header { border-bottom-color:#DEDDF3; }
+#nav a.active { box-shadow:inset 0 -3px #C8C2FF; }
+.button { border-radius:1rem; box-shadow:0 4px 0 rgba(47,40,147,.12); }
+.button.alt { border-color:#BDB8EF; box-shadow:none; }
+.eyebrow { padding:.5rem .875rem; border-radius:2rem; background:#E0F6ED; color:#066959; font-size:.75rem; letter-spacing:.04em; }
+.hero { gap:2.5rem; padding-bottom:2rem; }
+.hero h1 { color:#29265A; font-size:clamp(2.5rem,5.4vw,4rem); }
+.hero-art { position:relative; border-radius:2rem; background:#E5EDFF; overflow:hidden; border:6px solid #fff; box-shadow:0 16px 48px rgba(59,67,144,.1); }
+.hero-art .hero-image { display:block; width:100%; height:auto; aspect-ratio:4/3; object-fit:cover; margin:0; border-radius:0; }
+.art-badge { position:absolute; top:1rem; left:1rem; background:#fff; color:#44388C; border-radius:2rem; padding:.5rem .875rem; font-size:.75rem; font-weight:700; z-index:1; box-shadow:0 4px 16px rgba(55,44,133,.08); }
+.art-caption { display:flex; align-items:center; gap:1rem; padding:1rem 1.5rem; background:#fff; font-size:.875rem; line-height:1.5; }
+.caption-symbol { display:grid; place-items:center; width:2.75rem; height:2.75rem; border-radius:1rem; background:#FFE7F0; color:#A34064; font-size:1.5rem; flex-shrink:0; }
+.strip { border-radius:1.5rem; padding:1.5rem 0; margin-bottom:2rem; }
+.strip>div:nth-child(1) b { color:#5148D9; }.strip>div:nth-child(2) b { color:#067368; }.strip>div:nth-child(3) b { color:#9F4665; }.strip>div:nth-child(4) b { color:#835F0F; }
+.roadmap-section { margin:0 0 2.5rem; padding:1.5rem; background:#EEEFFF; border:1px solid #DCDDF4; border-radius:1.5rem; display:grid; grid-template-columns:repeat(4,minmax(0,1fr)); gap:1rem; }
+.roadmap-section .roadmap-label { grid-column:1/-1; margin-bottom:0; }
+.roadmap-section .roadmap-link { margin:0; display:block; padding:1.25rem; }
+.roadmap-section .roadmap-link .roadmap-index { margin-bottom:1rem; background:#E7E4FF; }
+.roadmap-section .roadmap-link strong { font-size:.875rem; }.roadmap-section .roadmap-link small { display:block; margin-top:.5rem; font-size:.875rem; }
+.roadmap-section .roadmap-link:nth-child(3) .roadmap-index { background:#DCF4E9; }.roadmap-section .roadmap-link:nth-child(4) .roadmap-index { background:#FFF0CB; }.roadmap-section .roadmap-link:nth-child(5) .roadmap-index { background:#FFE5EF; color:#9F4665; }
+.card { border-radius:1.5rem; transition:box-shadow .2s,border-color .2s; }
+.card.tint { background:#E7F8F0; }.card.yellow { background:#FFF4D5; }
+.club-grid { grid-template-columns:repeat(5,minmax(0,1fr)); gap:1rem; }
+.club-grid .card { padding:1.5rem 1rem; background:#fff; }.club-grid h3 { display:flex; flex-direction:column; font-size:1rem; gap:1rem; }
+.club-icon { display:grid; place-items:center; width:3.5rem; height:3.5rem; border-radius:1.25rem; font-size:1.75rem; background:#EEEDFF; }
+.club-grid .card:nth-child(4n+2) .club-icon { background:#E0F6EC; }.club-grid .card:nth-child(4n+3) .club-icon { background:#FFF1C8; }.club-grid .card:nth-child(4n+4) .club-icon { background:#FFE5ED; }
+.club-grid p { font-size:.875rem; line-height:1.65; }
+.step { border-left:5px solid #5148D9; }.step:nth-of-type(2) { border-left-color:#067368; }.step:nth-of-type(3) { border-left-color:#AF7B14; }.step:nth-of-type(4) { border-left-color:#A34064; }
+.image-slot { border-style:solid; background:#fff; }
+.image-slot img { border-radius:1.25rem; }
+footer { background:#29265A; border-radius:2.5rem 2.5rem 0 0; }
+@media(max-width:1000px) { .club-grid { grid-template-columns:repeat(3,minmax(0,1fr)); }.roadmap-section { grid-template-columns:repeat(2,minmax(0,1fr)); } }
+@media(max-width:540px) { .hero h1 { font-size:2.5rem; }.club-grid { grid-template-columns:repeat(2,minmax(0,1fr)); gap:.75rem; }.club-grid .card { padding:1rem; }.roadmap-section { padding:1rem; gap:.75rem; }.roadmap-section .roadmap-link { padding:1rem; }.art-caption { padding:1rem; }.art-badge { font-size:.75rem; }.hero-art { border-width:4px; } }
+</style>
+</head>
+<body>
+  <a class="skip" href="#main">Đến nội dung chính</a>
+  <div class="course-bar"><span>TIN HỌC 12 · CHỦ ĐỀ E · ICT</span><span>WebQuest / Nhóm 4</span></div>
+  <header class="site-header">
+    <div class="header-inner">
+      <a class="brand" href="#gioi-thieu" aria-label="Kết nối câu lạc bộ – Trang giới thiệu"><span class="logo" aria-hidden="true">K<span>·</span></span><span>Kết nối<small>câu lạc bộ</small></span></a>
+      <button id="toggle" type="button" aria-label="Mở menu học tập" aria-controls="nav" aria-expanded="false"><span aria-hidden="true">☰</span> Menu</button>
+      <nav id="nav" aria-label="Các phần WebQuest"></nav>
+      <a class="button small header-cta" href="#danh-gia">Nộp bài</a>
+    </div>
+  </header>
+  <div class="page-meta"><span id="page-label">01 / Giới thiệu</span><span>4 tiết <span aria-hidden="true">·</span> 1 dự án thực hành</span></div>
+  <main id="main" tabindex="-1"></main>
+  <footer>
+    <div class="footer-inner"><div><a class="brand" href="#gioi-thieu"><span class="logo" aria-hidden="true">K<span>·</span></span><span>Kết nối<small>câu lạc bộ</small></span></a><p>WebQuest · Tin học 12<br>Thực hành sử dụng phần mềm tạo trang web</p></div>
+    <div><strong>Nhóm 4</strong><p>Dương Thị Thu Diểm · Đặng Ánh Dương<br>Nguyễn Văn Luân · Phùng Ngọc Nhân<br>Nguyễn Thị Cẩm Tiên</p></div>
+    <div class="footer-links"><strong>Học tập</strong><a href="#tien-trinh">Tiến trình & đăng ký nhóm</a><a href="#hoc-lieu">Học liệu & sản phẩm mẫu</a><a href="#danh-gia">Rubric & nộp sản phẩm</a></div></div>
+    <div class="footer-bottom"><span>Kết nối câu lạc bộ · Học qua việc tạo sản phẩm</span><span>Thiết kế để sử dụng cho nhiều lớp học</span></div>
+  </footer>
+  <noscript><p class="notice">Hãy bật JavaScript để xem nội dung WebQuest và các biểu mẫu.</p></noscript>
+  <script>/* Teacher configuration: replace only the quoted values below.
+   Use public HTTPS URLs or local paths such as assets/hero.webp.
+   Empty media values keep the existing instructional fallback visible. */
+window.WEBQUEST_CONFIG = {
+  signup: 'https://docs.google.com/forms/d/e/1FAIpQLSf0Vvk0uepud-2IeNhvMDAR87B2HvaDJvrSlNhsRb2LvmcBiA/viewform',
+  submission: 'https://docs.google.com/forms/d/e/1FAIpQLSeVar6It8CpfL3DdyOYlfQKV8uLOdVDO_dVhzAsUyVgo8VfIg/viewform',
+  heroImage: 'assets/team-clay.webp', // Illustration, recommended 4:3, no baked-in text.
+  heroAlt: 'Học sinh cùng thiết kế website cho câu lạc bộ',
+  classImage: 'assets/reading-clay.webp', // An authorized classroom or club photo.
+  classImageAlt: 'Minh họa AI: học sinh cùng đọc sách trong câu lạc bộ giả định',
+  videoEmbed: '', // Example: https://www.youtube.com/embed/VIDEO_ID
+  videoLink: '',  // Optional direct video link.
+  rubricData: null // Leave null; app.js reads rubrics.json.
+};
+
+window.WEBQUEST_CONFIG.rubricData=[[["Tiêu chí", "Tối đa", "Mức 4", "Mức 3", "Mức 2", "Mức 1 và mức 0"], ["Nội dung CLB", "3", "3 điểm: đủ 6 ý: mục đích; đối tượng; 2 hoạt động (mỗi hoạt động có tên và mô tả); lịch; điều kiện; 3 bước tham gia. Thông tin thực có căn cứ, thông tin giả định có nhãn minh họa.", "2,25 điểm: thiếu hoặc sai 1 trong 6 ý. Sai là mâu thuẫn nguồn đã xác nhận hoặc thông tin giả định không gắn nhãn.", "1,5 điểm: thiếu hoặc sai 2–3 ý trong 6 ý.", "0,75 điểm: thiếu/sai 4–5 ý. 0 điểm: không có ý nào đáp ứng hoặc không có sản phẩm."], ["Bố cục", "1", "1 điểm: các khối cùng loại được nhóm; khoảng cách tách rõ từng khối; thứ tự giới thiệu → chi tiết → tham gia; không có chữ/ảnh chồng, che hoặc bị cắt.", "0,75 điểm: đạt 3/4 điều kiện; nêu rõ điều kiện chưa đạt.", "0,5 điểm: đạt 2/4 điều kiện.", "0,25 điểm: đạt 1/4; 0 điểm: không đạt điều kiện nào. Không chấm màu hoặc liên kết ở đây."], ["Màu sắc và chữ", "1", "1 điểm: đạt 4 điều kiện: màu nhấn thống nhất; cùng loại tiêu đề cùng kiểu; chữ đọc được trên nền ở màn hình lớp; liên kết/nút có nhãn để nhận biết không chỉ dựa vào màu.", "0,75 điểm: đạt 3/4 điều kiện. Chữ không đọc được là cùng/gần màu nền khiến người dùng phải chọn văn bản mới đọc.", "0,5 điểm: đạt 2/4 điều kiện.", "0,25 điểm: đạt 1/4; 0 điểm: không đạt. Không chấm vị trí khối hoặc thiếu nội dung."], ["Menu và liên kết", "2", "2 điểm: 6 lượt chuyển từ mỗi trang sang hai trang còn lại qua menu đều tới đúng trang; không dẫn tới trang chỉnh sửa.", "1,5 điểm: 4–5/6 lượt tới đúng trang.", "1 điểm: 2–3/6 lượt tới đúng trang.", "0,5 điểm: 1/6 lượt đúng; 0 điểm: không lượt nào đúng/không có menu."], ["Thành phần và mẫu biểu", "2", "2 điểm: đủ 4 kiểm tra: tiêu đề trang hiển thị; khung bài viết hiển thị; ảnh đại diện hiển thị; Form nhúng mở và gửi được phản hồi thử. Chỉ kiểm tra hoạt động thành phần, không chấm lại nội dung/chữ.", "1,5 điểm: đạt 3/4 kiểm tra. Form chỉ có link ngoài không đạt yêu cầu nhúng.", "1 điểm: đạt 2/4 kiểm tra.", "0,5 điểm: đạt 1/4; 0 điểm: không đạt kiểm tra nào."], ["Xuất bản và truy cập", "1", "1 điểm: đạt 4 kiểm tra: link xuất bản mở với tài khoản người xem; ba trang xem được; bản xem trước điện thoại tải được; không hiển thị danh sách phản hồi hoặc thông tin thử cá nhân.", "0,75 điểm: đạt 3/4 kiểm tra.", "0,5 điểm: đạt 2/4 kiểm tra.", "0,25 điểm: đạt 1/4; 0 điểm: không đạt. Không chấm lại lỗi menu, Form hoặc che chữ."]], [["Tiêu chí", "Tối đa", "Mức 4", "Mức 3", "Mức 2", "Mức 1 và mức 0"], ["Thao tác phần mềm – (1), (3)", "4", "4 điểm: HS tự thực hiện 4 thao tác: tạo/đổi trang; thêm/sửa văn bản; thêm/thay ảnh; nhúng hoặc sửa mẫu biểu. Minh chứng GV quan sát hoặc video quay thao tác của chính HS.", "3 điểm: tự thực hiện 3/4 thao tác; thao tác còn lại cần bạn/GV làm thay.", "2 điểm: tự thực hiện 2/4 thao tác.", "1 điểm: tự thực hiện 1/4; 0 điểm: không thực hiện được thao tác nào. Không suy ra từ sản phẩm nhóm."], ["Khai thác học liệu – (2)", "2", "2 điểm: chỉ được nguồn cụ thể; chọn thông tin/thao tác phù hợp nhiệm vụ; giải thích cách áp dụng vào phần của mình; ghi nguồn có tên tài liệu/đơn vị và URL hoặc trang. Đủ 4 biểu hiện.", "1,5 điểm: có 3/4 biểu hiện qua báo cáo và giải thích riêng.", "1 điểm: có 2/4 biểu hiện.", "0,5 điểm: có 1/4; 0 điểm: không có biểu hiện/minh chứng. Không chấm lại đúng sai nội dung CLB."], ["Giao tiếp và hợp tác – (4)", "2", "2 điểm: HS phân tích đủ 4 nội dung trong phần việc của nhóm: công việc cần làm; kết quả cần hoàn thành; người thực hiện; thời hạn và việc phải làm trước. Thể hiện trong bảng phân công và giải thích riêng.", "1,5 điểm: phân tích được 3/4 nội dung; nội dung còn lại chưa xác định hoặc không giải thích được.", "1 điểm: phân tích được 2/4 nội dung.", "0,5 điểm: phân tích được 1/4 nội dung; 0 điểm: không phân tích được nội dung nào hoặc không có minh chứng."], ["Tìm tòi và chỉnh sửa – (5)", "2", "2 điểm: đủ 4 biểu hiện: thử một phương án của phần mình; phát hiện vấn đề khi dùng thử; thực hiện sửa; giải thích lí do chọn cách sửa. Có ảnh/thao tác trước và sau.", "1,5 điểm: có 3/4 biểu hiện.", "1 điểm: có 2/4 biểu hiện.", "0,5 điểm: có 1/4; 0 điểm: không có biểu hiện. Góp ý cho bạn thuộc hợp tác; tự sửa thuộc tiêu chí này."]]];</script>
+  <script>// All lesson content is kept here; edit teacher links/media in config.js.
+const config = window.WEBQUEST_CONFIG || {};
+const signup=config.signup || 'https://docs.google.com/forms/d/e/1FAIpQLSf0Vvk0uepud-2IeNhvMDAR87B2HvaDJvrSlNhsRb2LvmcBiA/viewform';
+const submit=config.submission || 'https://docs.google.com/forms/d/e/1FAIpQLSeVar6It8CpfL3DdyOYlfQKV8uLOdVDO_dVhzAsUyVgo8VfIg/viewform';
+const menu=[['gioi-thieu','Giới thiệu'],['nhiem-vu','Nhiệm vụ'],['tien-trinh','Tiến trình'],['hoc-lieu','Học liệu'],['danh-gia','Đánh giá – Nộp bài'],['ket-luan','Kết luận']];
+const clubIcons=['💻','🔬','📚','🌍','📣','🎵','🎨','🏀','♟️','🌱'];
+const clubs=['Tin học','STEM','Đọc sách','Tiếng Anh','Truyền thông','Âm nhạc','Mĩ thuật','Thể thao','Cờ vua','Môi trường'];
+const head=(label,title,text)=>`<div class="eyebrow">${label}</div><h1>${title}</h1><p class="lead">${text}</p>`;
+const card=(title,text,cls='')=>`<article class="card ${cls}"><h3>${title}</h3>${text}</article>`;
+const pages={
+'gioi-thieu':()=>`<section class="hero"><div>${head('WebQuest · Tin học 12 · ICT','Kết nối<br>câu lạc bộ','Làm thế nào để một học sinh tìm hiểu và đăng ký tham gia câu lạc bộ qua một website dễ sử dụng?')}<p>Nhóm em đóng vai đội thiết kế website cho một câu lạc bộ của trường. Hãy tìm hiểu nhu cầu người xem, xây dựng website, cho nhóm bạn dùng thử rồi hoàn thiện trước khi giới thiệu sản phẩm.</p><div class="actions"><a class="button" href="#nhiem-vu">Xem nhiệm vụ</a><a class="button alt" href="#tien-trinh">Đăng ký nhóm</a></div></div><aside class="hero-art"><div class="art-badge">Cùng thiết kế · Cùng khám phá</div>${config.heroImage ? `<img class="hero-image" src="${escape(config.heroImage)}" alt="${escape(config.heroAlt || '')}" fetchpriority="high" width="1200" height="900">` : ''}<div class="art-caption"><span class="caption-symbol" aria-hidden="true">✦</span><span>Một ý tưởng của nhóm.<br><strong>Một website cho cộng đồng.</strong></span></div></aside></section><div class="strip"><div><b>4 tiết</b>180 phút trên lớp</div><div><b>5 nhóm</b>6–8 học sinh / nhóm</div><div><b>3 trang</b>Trang chủ · Hoạt động · Tham gia</div><div><b>1 báo cáo</b>Lưu quá trình thực hiện</div></div><section class="roadmap-section"><div class="roadmap-label"><span>Lộ trình của nhóm em</span><span class="pill">4 tiết</span></div><a class="roadmap-link" href="#tien-trinh"><span class="roadmap-index">01</span><span><strong>Hiểu nhiệm vụ & thiết kế</strong><small>Chọn CLB · Phân công · Phác thảo</small></span></a><a class="roadmap-link" href="#tien-trinh"><span class="roadmap-index">02</span><span><strong>Tạo website phiên bản đầu</strong><small>Ba trang · Menu · Biểu mẫu</small></span></a><a class="roadmap-link" href="#tien-trinh"><span class="roadmap-index">03</span><span><strong>Dùng thử & hoàn thiện</strong><small>Nhận góp ý · Chỉnh sửa · Nộp bài</small></span></a><a class="roadmap-link" href="#tien-trinh"><span class="roadmap-index">04</span><span><strong>Giới thiệu sản phẩm</strong><small>7 phút báo cáo · 2 phút trao đổi</small></span></a></section><div class="grid">${card('Người xem','<p>Học sinh đang tìm một câu lạc bộ phù hợp với sở thích.</p>','tint')}${card('Sản phẩm cuối','<p>Website CLB có menu, bài viết, hình ảnh và biểu mẫu tham gia.</p>')}${card('Giá trị sử dụng','<p>Giúp người xem hiểu CLB và thực hiện được bước đăng ký.</p>','yellow')}</div><h2>Em sẽ học được gì?</h2><div class="two">${card('Kiến thức','<ul><li>Sử dụng được một số chức năng cơ bản của phần mềm tạo trang web.</li><li>Tạo được một trang web tĩnh đơn giản gồm menu liên kết các trang, tiêu đề, bài viết, ảnh đại diện và mẫu biểu.</li></ul>')}${card('Năng lực và phẩm chất','<ul><li>Tạo được trang web đơn giản. (1)</li><li>Khai thác dịch vụ tra cứu, trao đổi thông tin và nguồn học liệu mở để cập nhật kiến thức, hỗ trợ học tập, tự học. (2)</li><li>Sử dụng phần mềm hỗ trợ học tập. (3)</li><li>Phân tích công việc cần thực hiện để hoàn thành nhiệm vụ nhóm. (4)</li><li>Tích cực tìm tòi và sáng tạo trong học tập. (5)</li></ul>')}</div>`,
+'nhiem-vu':()=>`${head('02 · Nhiệm vụ','Thiết kế website cho một CLB','Website phải giúp người xem trả lời: CLB làm gì, có phù hợp với mình không và tham gia bằng cách nào?')}<h2>Chọn một câu lạc bộ</h2><div class="grid club-grid">${clubs.map((c,i)=>card(`<span class="club-icon" aria-hidden="true">${clubIcons[i]}</span><span>${c}</span>`,'<p>Chọn đề tài trong form đăng ký. Giáo viên xác nhận trước khi nhóm bắt đầu.</p>')).join('')}</div><div class="notice">Trong cùng một lớp, các nhóm cần chọn đề tài khác nhau sau khi giáo viên xác nhận. Có thể dùng CLB thực tế với thông tin đã kiểm chứng hoặc mô hình CLB giả định được ghi rõ.</div><h2>Cấu trúc website cần nộp</h2><div class="grid">${card('01 · Trang chủ','<ul><li>Tên CLB, lời giới thiệu và đối tượng phù hợp.</li><li>Ảnh đại diện có quyền sử dụng và nguồn.</li><li>Nút dẫn đến Hoạt động và Tham gia.</li></ul>')}${card('02 · Hoạt động','<ul><li>Giới thiệu các hoạt động tiêu biểu: tên, nội dung và cách tham gia.</li><li>Thông tin thời gian, địa điểm nếu có căn cứ; thông tin giả định phải gắn nhãn.</li><li>Ảnh minh họa và chú thích liên quan.</li></ul>')}${card('03 · Tham gia','<ul><li>Đối tượng, điều kiện và hướng dẫn đăng ký.</li><li>Nhúng Google Form của CLB, có liên kết mở riêng.</li><li>Chỉ hỏi thông tin cần thiết; dùng dữ liệu giả khi thử.</li></ul>')}</div><h2>Yêu cầu trình bày</h2><div class="two">${card('Bố cục','<p>Menu xuất hiện thống nhất trên ba trang. Mỗi trang có tiêu đề rõ, nội dung chia thành các khối theo thứ tự đọc. Ảnh không che chữ; kiểm tra trên máy tính và điện thoại.</p>')}${card('Màu sắc và chữ','<p>Chọn màu chủ đạo và màu nhấn nhất quán. Chữ dễ đọc, phân biệt rõ với nền. Tiêu đề cùng cấp dùng cùng kiểu chữ; không dùng màu làm dấu hiệu duy nhất.</p>')}</div><h2>Gói nộp cuối cùng</h2><ol><li><b>Link website đã xuất bản</b>, có quyền xem phù hợp và hoạt động đủ ba trang.</li><li><b>Link một file báo cáo DOCX</b>: thành viên, phân công, ý tưởng, nguồn, quá trình dùng thử và chỉnh sửa. <a href="MauBaoCao.docx" download>Tải mẫu báo cáo</a>.</li></ol><p>Không yêu cầu thêm một bài trình chiếu. Nhóm báo cáo trực tiếp bằng website.</p><a class="button" href="#tien-trinh">Xem lộ trình thực hiện</a>`,
+ 'tien-trinh':()=>`${head('03 · Tiến trình','Từ ý tưởng đến website dùng được','Bốn hoạt động trải dài toàn dự án. Không khởi động lại ở mỗi tiết.')}<div class="table-wrap"><table><tr><th>Tiết</th><th>Hoạt động</th><th>Thời lượng</th><th>Kết quả</th></tr><tr><td>1</td><td>Khởi động; hình thành kiến thức 2.1</td><td>10 + 35 phút</td><td>Đề tài được xác nhận, phân công và bản thiết kế ba trang.</td></tr><tr><td>2</td><td>Hình thành kiến thức 2.2; luyện tập</td><td>15 + 30 phút</td><td>Website phiên bản đầu, menu, nội dung và form.</td></tr><tr><td>3</td><td>Vận dụng: dùng thử, chỉnh sửa, nộp bài</td><td>45 phút</td><td>Website hoàn thiện và báo cáo DOCX.</td></tr><tr><td>4</td><td>Vận dụng: báo cáo và trao đổi</td><td>45 phút</td><td>Mỗi nhóm 7 phút báo cáo + 2 phút hỏi đáp.</td></tr></table></div><section class="step"><h2>Tiết 1 · Hiểu nhiệm vụ và thiết kế</h2><p><b>10 phút:</b> Xem website mẫu, xác định thông tin người muốn tham gia CLB cần biết. Chọn CLB, đăng ký và chờ giáo viên xác nhận.</p><p><b>35 phút:</b> Khai thác hướng dẫn tạo trang, menu, văn bản và ảnh. Nhóm phác thảo ba trang, chọn nguồn và phân tích các công việc cần làm.</p><p><b>Giáo viên:</b> Giới thiệu vấn đề, cung cấp nguồn, xác nhận đề tài và hỗ trợ thao tác. <b>Học sinh:</b> Thảo luận nhu cầu người xem, lập thiết kế, phân công và bắt đầu tạo trang.</p><details><summary>Phân công cho 6–8 thành viên</summary><p>Với 6 học sinh: ba cặp cùng phụ trách ba trang; mỗi người trực tiếp tạo hoặc chỉnh sửa một phần và kiểm tra phần của bạn. Nếu có thành viên thứ 7 hoặc 8, phân thêm việc tạo form, xử lý ảnh, thử liên kết; vẫn phải có phần trực tiếp thao tác trên website.</p><p>Báo cáo ghi rõ: công việc, kết quả cần có, người thực hiện và thời điểm hoặc công việc phụ thuộc. Nhóm cân đối lại khi một người có quá nhiều việc.</p></details></section><section class="step"><h2>Tiết 2 · Tạo phiên bản đầu</h2><p><b>15 phút:</b> Thử nhúng form, chèn liên kết và xem trước. Giáo viên hướng dẫn ngắn bằng sản phẩm mẫu, học sinh thực hiện lại trên website nhóm.</p><p><b>30 phút:</b> Các thành viên tạo nội dung theo phân công, hoàn thiện menu và ba trang. Ghi nguồn ảnh, thông tin đã sử dụng vào báo cáo chung.</p><p><b>Kết quả:</b> Bản đầu đủ cấu trúc để người khác dùng thử. Giáo viên quan sát thao tác riêng của từng học sinh.</p></section><section class="step"><h2>Tiết 3 · Dùng thử và hoàn thiện</h2><p><b>10 phút:</b> Đổi website với một nhóm khác. Người thử thực hiện ba việc: tìm một hoạt động, tìm điều kiện tham gia, mở và thử gửi form bằng dữ liệu giả.</p><p><b>5 phút:</b> Ghi rõ chỗ khó tìm, liên kết không chạy hoặc bước chưa hiểu; góp ý cụ thể.</p><p><b>20 phút:</b> Nhóm chọn vấn đề cần sửa, sửa website và thử lại. Báo cáo ghi góp ý, cách xử lý và minh chứng trước–sau.</p><p><b>10 phút:</b> Xuất bản, kiểm tra quyền xem, hoàn thiện DOCX và nộp hai liên kết. Chuẩn bị thứ tự báo cáo để tiết 4 không mất thời gian chuyển nhóm.</p><p>Nếu cần hoàn thiện ngoài lớp, nhóm thống nhất trước khoảng 45–60 phút cho mỗi học sinh; không giao toàn bộ việc còn lại cho một thành viên.</p></section><section class="step"><h2>Tiết 4 · Giới thiệu sản phẩm</h2><p>5 nhóm × 9 phút = 45 phút. Mỗi nhóm <b>7 phút</b> giới thiệu người xem mục tiêu, ba trang, cách đăng ký và một chỉnh sửa sau dùng thử; <b>2 phút</b> trả lời câu hỏi. Phân lượt trình bày phù hợp để các thành viên có minh chứng tham gia.</p><p>Giáo viên chấm theo rubric và phản hồi dựa trên minh chứng quá trình, sản phẩm và thao tác cá nhân.</p></section><h2>Đăng ký nhóm và đề tài</h2><p>Chọn đúng năm học, lớp và nhóm. Không dùng form này để đăng ký tham gia một CLB.</p><a class="button alt" href="${signup}" target="_blank" rel="noopener">Mở form riêng</a><iframe title="Form đăng ký nhóm và đề tài" src="${signup}?embedded=true" loading="lazy"></iframe>`,
+'hoc-lieu':()=>`${head('04 · Nguồn tư liệu','Học liệu để bắt tay vào làm','Dùng những tài liệu dưới đây trước khi tìm thêm nguồn. Kiểm tra và ghi nguồn thông tin, ảnh của CLB vào báo cáo.')}<div class="grid">${card('Website CLB mẫu','<p>Ví dụ giả định của CLB Đọc sách: ba trang, hoạt động và biểu mẫu minh họa.</p><a class="button" href="mau.html" target="_blank">Xem sản phẩm mẫu</a>','tint')}${card('Mẫu báo cáo nhóm','<p>Một file DOCX dùng xuyên suốt để lưu phân công, nguồn, quá trình và góp ý.</p><a class="button alt" href="MauBaoCao.docx" download>Tải mẫu DOCX</a>')}${card('Hướng dẫn từng bước','<p>Làm theo các mục thao tác bên dưới, sau đó dùng chức năng xem trước để kiểm tra.</p>','yellow')}</div><h2>Hướng dẫn thực hành</h2><details open><summary>1. Tạo website và ba trang</summary><ol><li>Mở Google Sites, tạo trang web mới; đặt tên theo CLB nhóm chọn.</li><li>Trong thẻ Trang, tạo Trang chủ, Hoạt động, Tham gia.</li><li>Chọn vị trí menu thống nhất; xem trước và thử chuyển cả ba trang.</li></ol><a href="https://support.google.com/sites/answer/98081?hl=vi" target="_blank" rel="noopener">Hướng dẫn chính thức: tạo trang web</a></details><details><summary>2. Chèn và sắp xếp nội dung</summary><ol><li>Trong Chèn, thêm hộp văn bản và hình ảnh phù hợp với từng trang.</li><li>Chia nội dung thành các phần có tiêu đề; đặt ảnh gần nội dung liên quan.</li><li>Chọn giao diện và màu; kiểm tra xem trước trên màn hình nhỏ.</li></ol><a href="https://support.google.com/sites/answer/90569?hl=vi" target="_blank" rel="noopener">Hướng dẫn chính thức: thêm nội dung</a></details><details><summary>3. Tạo và nhúng form của CLB</summary><ol><li>Tạo Google Form hỏi tên dùng thử, lớp, lựa chọn hoạt động và xác nhận muốn tham gia. Không hỏi dữ liệu nhạy cảm.</li><li>Trong Google Sites, chọn Chèn → Biểu mẫu, chọn form nhóm tạo.</li><li>Thêm nút mở form riêng; thử bằng dữ liệu giả và kiểm tra phản hồi.</li></ol><p>Đây là form trên sản phẩm CLB, khác form đăng ký đề tài và form nộp bài của giáo viên.</p><a href="https://support.google.com/docs/answer/6281888?hl=vi" target="_blank" rel="noopener">Hướng dẫn chính thức: Google Forms</a></details><details><summary>4. Xuất bản và kiểm tra quyền xem</summary><ol><li>Chọn Xuất bản, đặt địa chỉ và quyền xem theo hướng dẫn của giáo viên.</li><li>Sao chép liên kết đã xuất bản; mở từ tài khoản hoặc cửa sổ khác có quyền phù hợp.</li><li>Thử menu, nút và form; kiểm tra link báo cáo DOCX trước khi nộp.</li></ol><a href="https://support.google.com/sites/answer/6372880?hl=vi" target="_blank" rel="noopener">Hướng dẫn chính thức: xuất bản và chia sẻ</a></details><h2>Ảnh và video của lớp</h2><div class="two"><div class="image-slot">${config.classImage ? `<img src="${escape(config.classImage)}" alt="${escape(config.classImageAlt || '')}" loading="lazy" onerror="this.hidden=true">` : ''}<b>Minh họa CLB Đọc sách</b><p>Ảnh được tạo bằng AI cho sản phẩm mẫu giả định. Khi làm CLB thật, nhóm dùng ảnh có quyền sử dụng và ghi nguồn.</p></div><div class="image-slot"><b>Video hướng dẫn của giáo viên</b>${config.videoEmbed ? `<iframe class="video-frame" title="Video hướng dẫn thực hành" src="${escape(config.videoEmbed)}" loading="lazy" allowfullscreen></iframe>` : '<p>Chưa có video riêng được cung cấp. Các bước thực hành và tài liệu chính thức phía trên có thể sử dụng ngay.</p>'}${config.videoLink ? `<a href="${escape(config.videoLink)}" target="_blank" rel="noopener">Mở video riêng</a>` : ''}</div></div><h2>Căn cứ và nguồn tham khảo</h2><ul><li>Bộ GDĐT, Chương trình GDPT môn Tin học 2018: lớp 12, Chủ đề E, định hướng ICT, trang 53 bản chương trình đã cung cấp.</li><li>Bộ GDĐT, Công văn 5512/BGDĐT-GDTrH, Phụ lục IV: cấu trúc kế hoạch bài dạy.</li><li><a href="https://www.pblworks.org/gold-standard/pbl-project-design" target="_blank" rel="noopener">PBLWorks – các yếu tố thiết kế dạy học dự án</a>.</li><li>Google Sites và Google Forms Help: các hướng dẫn thao tác được liên kết ở trên.</li></ul>`,
+'danh-gia':()=>`${head('05 · Đánh giá – Nộp bài','Biết tiêu chí trước khi nộp','Điểm sản phẩm website chiếm 60%; điểm quá trình và kĩ năng cá nhân chiếm 40%. Xem từng tiêu chí trước khi hoàn thiện website và báo cáo.')}<div id="rubrics"><p>Đang tải bảng tiêu chí…</p></div><h2>Kiểm tra trước khi nộp</h2><ul class="checklist"><li>Website đã xuất bản; ba trang và menu hoạt động.</li><li>Nội dung CLB có căn cứ hoặc đã ghi rõ là giả định.</li><li>Form CLB mở được; dữ liệu thử không phải thông tin cá nhân thật.</li><li>Báo cáo DOCX có thành viên, phân công, nguồn và chỉnh sửa sau dùng thử.</li><li>Hai liên kết có quyền xem phù hợp; đã thử mở trước khi gửi.</li></ul><h2>Nộp sản phẩm</h2><p>Chọn đúng năm học, lớp, nhóm; gửi link website và link báo cáo DOCX. Không gửi link chỉnh sửa form.</p><a class="button alt" href="${submit}" target="_blank" rel="noopener">Mở form nộp bài riêng</a><iframe title="Form nộp website và báo cáo" src="${submit}?embedded=true" loading="lazy"></iframe>`,
+'ket-luan':()=>`${head('06 · Kết luận','Một website có người dùng','Sản phẩm hoàn thành khi người xem hiểu câu lạc bộ và thực hiện được bước tham gia.')}<div class="grid">${card('Nhìn lại','<p>Điều gì trên website giúp người xem tìm thông tin nhanh hơn? Nhóm đã thay đổi gì sau khi quan sát người dùng thử?</p>')}${card('Tự đánh giá','<p>Em trực tiếp thực hiện thao tác nào? Em dùng học liệu nào để giải quyết việc chưa biết và có thể thực hiện lại thao tác đó không?</p>','tint')}${card('Phát triển tiếp','<p>Nếu CLB dùng website thực tế, cần xác nhận thông tin với người phụ trách và thống nhất cách cập nhật hoạt động.</p>','yellow')}</div><h2>Sử dụng cho nhiều lớp, nhiều năm</h2><p>Form đăng ký và nộp bài dùng trường năm học, lớp, nhóm để phân biệt dữ liệu. Mỗi đợt triển khai, giáo viên cập nhật danh sách lớp, thời hạn và học liệu; giữ nguyên lộ trình và cập nhật nguồn khi cần.</p><p>Minh chứng được tổ chức theo <b>Năm học / Lớp / Nhóm / Sản phẩm – Báo cáo – Dùng thử</b>. Không công bố thông tin cá nhân hoặc quyền chỉnh sửa của nhóm lên trang học tập.</p><a class="button" href="#gioi-thieu">Về giới thiệu dự án</a>`};
+const escape=s=>String(s).replaceAll('&','&amp;').replaceAll('<','&lt;').replaceAll('>','&gt;').replaceAll('"','&quot;').replaceAll("'",'&#39;');
+// Route rendering keeps the six WebQuest sections in a predictable order.
+let renderVersion = 0;
+async function render() {
+  const version = ++renderVersion;
+  let id = location.hash.slice(1) || 'gioi-thieu';
+  if (!pages[id]) id = 'gioi-thieu';
+  const index = menu.findIndex(([key]) => key === id);
+  const previous = menu[index - 1];
+  const next = menu[index + 1];
+  const main = document.getElementById('main');
+  main.innerHTML = pages[id]() + `<div class="lesson-nav" aria-label="Chuyển phần học tập">${previous ? `<a class="button alt" href="#${previous[0]}">Trước: ${previous[1]}</a>` : '<span></span>'}${next ? `<a class="button" href="#${next[0]}">Tiếp: ${next[1]}</a>` : ''}</div>`;
+  document.getElementById('page-label').textContent = `${String(index+1).padStart(2,'0')} / ${menu[index][1]}`;
+  document.title = `${menu[index][1]} · Kết nối câu lạc bộ`;
+  document.getElementById('nav').innerHTML = menu.map(([key,title]) => `<a href="#${key}" class="${key===id?'active':''}" ${key===id?'aria-current="page"':''}>${title}</a>`).join('');
+  closeMenu();
+  window.scrollTo(0,0);
+  if (version > 1) main.focus({preventScroll:true});
+  // Render rubrics only for the active page; never overwrite a newer route.
+  if (id === 'danh-gia') {
+    try {
+      let data = config.rubricData;
+      if (!data) {
+        const response = await fetch('rubrics.json');
+        if (!response.ok) throw new Error('Rubric unavailable');
+        data = await response.json();
+      }
+      if (renderVersion !== version) return;
+      document.getElementById('rubrics').innerHTML = data.map((rows,i) => `<section class="rubric"><h2>Rubric ${i+1} · ${i===0?'Sản phẩm website (nhóm)':'Quá trình và kĩ năng (cá nhân)'}</h2><p class="scroll-hint">Có thể cuộn ngang để xem đầy đủ các mức đánh giá.</p><div class="table-wrap" tabindex="0" role="region" aria-label="Rubric ${i+1}"><table>${rows.map((row,j)=>'<tr>'+row.map((cell,k)=>j===0 ? `<th scope="col">${escape(cell)}</th>` : k===0 ? `<th scope="row">${escape(cell)}</th>` : `<td>${escape(cell)}</td>`).join('')+'</tr>').join('')}</table></div></section>`).join('');
+    } catch {
+      if (renderVersion === version) document.getElementById('rubrics').innerHTML='<p role="alert">Không tải được bảng tiêu chí. Kiểm tra kết nối rồi tải lại trang.</p>';
+    }
+  }
+}
+function closeMenu() {
+  document.getElementById('nav').classList.remove('open');
+  document.getElementById('toggle').setAttribute('aria-expanded','false');
+}
+document.getElementById('toggle').onclick = () => {
+  const nav = document.getElementById('nav');
+  nav.classList.toggle('open');
+  document.getElementById('toggle').setAttribute('aria-expanded',String(nav.classList.contains('open')));
+};
+document.addEventListener('keydown',event => {
+  if (event.key === 'Escape' && document.getElementById('nav').classList.contains('open')) {
+    closeMenu(); document.getElementById('toggle').focus();
+  }
+});
+window.addEventListener('hashchange',render);
+render();
+</script>
+</body>
+</html>
